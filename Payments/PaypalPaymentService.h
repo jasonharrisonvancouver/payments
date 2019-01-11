@@ -1,5 +1,5 @@
 //
-//  PaymentGateway.h
+//  PaypalPaymentService.h
 //  Payments
 //
 //  Created by jason harrison on 2019-01-11.
@@ -10,9 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PaymentGateway : NSObject
-
-- (void)processPaymentAmount:(NSInteger)paymentAmountUSD;
+@interface PaypalPaymentService : NSObject
 
 @end
 

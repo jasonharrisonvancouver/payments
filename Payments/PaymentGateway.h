@@ -10,6 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+@protocol PaymentDelegate <NSObject>
+@required
+- (void)processPaymentAmount:(NSInteger)paymentAmountUSD;
+@end
+
+
+
 @interface PaymentGateway : NSObject
 
 - (void)processPaymentAmount:(NSInteger)paymentAmountUSD;

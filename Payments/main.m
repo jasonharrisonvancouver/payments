@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "PaymentGateway.h"
+#import "PaypalPaymentService.h"
+#import "StripePaymentService.h"
+#import "AmazonPaymentService.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -27,8 +30,33 @@ int main(int argc, const char * argv[]) {
         
         printf("You chose %d\n\n", choice);
         
+        
         PaymentGateway *paymentGateway = [[PaymentGateway alloc] init];
+        
+        PaypalPaymentService *paypal = [[PaypalPaymentService alloc] init];
+        StripePaymentService *stripe = [[StripePaymentService alloc] init];
+        AmazonPaymentService *amazon = [[AmazonPaymentService alloc] init];
+        
+        switch(choice){
+            case(1):
+                NSLog(@"paypal choice");
+                paymentGateway.paymentDelegate = paypal;
+                break;
+            case(2):
+                paymentGateway.paymentDelegate = stripe;
+                break;
+            case(3):
+                paymentGateway.paymentDelegate = amazon;
+                break;
+            default:
+                break;
+        }
+        
         [paymentGateway processPaymentAmount:(NSInteger)randomAmountUSDollars];
+
+        
+        
+        
         
     }
     return 0;

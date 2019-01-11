@@ -12,6 +12,7 @@
 
 - (void)processPaymentAmount:(NSInteger)paymentAmountUSD{
     NSLog(@"processing payment of $%ld", paymentAmountUSD);
+    [[self paymentDelegate]processPaymentAmount:paymentAmountUSD];
 }
 
 

@@ -10,8 +10,19 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        char input[255];
+        
+        printf("Thank you for shopping at Acme.com\nYour total today is $%.2f\nPlease select your payment method:\n1: Paypal\n2: Stripe:\n3: Amazon:\n> ");
+        
+        fgets(input, 255, stdin);
+        
+        NSString *userInput = [NSString stringWithUTF8String:input];
+        
+        int choice = [userInput intValue];
+        
+        printf("You chose %d\n\n", choice);
+        
+        
     }
     return 0;
 }

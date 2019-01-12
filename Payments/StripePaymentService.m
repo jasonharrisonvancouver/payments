@@ -14,4 +14,14 @@
     NSLog(@"stripe processing payment of $%ld", paymentAmountUSD);
 }
 
+- (BOOL)canProcessPayment{
+    int random0or1 = arc4random_uniform(2);
+    
+    if(random0or1 == 0){
+        return NO;
+    }
+    
+    return YES;
+}
+
 @end

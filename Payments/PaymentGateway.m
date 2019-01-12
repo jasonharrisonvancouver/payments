@@ -11,8 +11,16 @@
 @implementation PaymentGateway
 
 - (void)processPaymentAmount:(NSInteger)paymentAmountUSD{
-    NSLog(@"processing payment of $%ld", paymentAmountUSD);
-    [[self paymentDelegate]processPaymentAmount:paymentAmountUSD];
+    // NSLog(@"processing payment of $%ld", paymentAmountUSD);
+    
+    if([[self paymentDelegate] canProcessPayment]){
+        
+        
+        [[self paymentDelegate]processPaymentAmount:paymentAmountUSD];
+    }else{
+        NSLog(@"Payment cannot be processed");
+    }
+    
 }
 
 

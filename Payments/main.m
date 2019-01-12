@@ -11,6 +11,7 @@
 #import "PaypalPaymentService.h"
 #import "StripePaymentService.h"
 #import "AmazonPaymentService.h"
+#import "ApplePaymentService.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -19,7 +20,7 @@ int main(int argc, const char * argv[]) {
         
         float randomAmountUSDollars = round((float)(randomAmountUSCents / 100));
         
-        printf("Thank you for shopping at Acme.com\nYour total today is $%.2f\nPlease select your payment method:\n1: Paypal\n2: Stripe:\n3: Amazon:\n> ",
+        printf("Thank you for shopping at Acme.com\nYour total today is $%.2f\nPlease select your payment method:\n1: Paypal\n2: Stripe:\n3: Amazon:\n>4: Apple: ",
                randomAmountUSDollars);
         
         fgets(input, 255, stdin);
@@ -36,6 +37,7 @@ int main(int argc, const char * argv[]) {
         PaypalPaymentService *paypal = [[PaypalPaymentService alloc] init];
         StripePaymentService *stripe = [[StripePaymentService alloc] init];
         AmazonPaymentService *amazon = [[AmazonPaymentService alloc] init];
+        ApplePaymentService  *apple  = [[ApplePaymentService  alloc] init];
         
         switch(choice){
             case(1):
@@ -47,6 +49,9 @@ int main(int argc, const char * argv[]) {
                 break;
             case(3):
                 paymentGateway.paymentDelegate = amazon;
+                break;
+            case(4):
+                paymentGateway.paymentDelegate = apple;
                 break;
             default:
                 break;
